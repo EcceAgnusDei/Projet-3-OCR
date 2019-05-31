@@ -67,10 +67,9 @@ function booking (user, stations)
 	function getMousePos(canvas, evt)
 	{
 		let rect = canvas.getBoundingClientRect();
-		return {
-			x: evt.clientX - rect.left,
-			y: evt.clientY - rect.top
-		};
+		return { x: (evt.clientX - rect.left) * (canvas.width  / rect.width),
+        y: (evt.clientY - rect.top)  * (canvas.height / rect.height)
+      };
 	}
 	
 	/**
