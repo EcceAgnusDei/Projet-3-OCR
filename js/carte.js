@@ -1,5 +1,4 @@
-//Permettra de réinitialiser le timer lors de la 2eme réservation
-let countDown = setInterval(function(){}, 999999);
+let timer = new Timer();
 
 window.addEventListener('load', function(){
 		if (sessionStorage.getItem('state') == 'booked')
@@ -8,50 +7,14 @@ window.addEventListener('load', function(){
 			let secondsLeft = parseInt(sessionStorage.getItem('time left'));
 			$('#summary').css('visibility','visible');
 			$('#summary-address').text(stationAddress);
-			timer(secondsLeft);
+			timer.setSecondsLeft(secondsLeft);
+			timer.launch();
 		}
 	});
 
 ajaxGet(
 	"https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=059b2d915baa90c9e9351f259d71d05425d2aa90",
 	main);
-
-/**
-* Fonction permetant le décompte et son affichage
-* @param {Number} secondsLeft Nombre de secondes avant fin du décompte
-*/
-function timer(secondsLeft)
-	{
-		countdown = setInterval(function(){
-			secondsLeft-- ;
-			sessionStorage.setItem('time left', secondsLeft);
-			if(secondsLeft < 0)
-			{
-				clearInterval(countdown);
-				sessionStorage.setItem('station', -1);
-				sessionStorage.setItem('state', 'unbooked');
-				$('#isBooked').text('expirée');
-				$('#timeleft').css('visibility', 'hidden');
-				return;
-			}
-			displayTimeLeft(secondsLeft);
-		}, 1000);
-
-		function displayTimeLeft(seconds)
-		{
-			let minutes = Math.floor(seconds / 60);
-			let remainderSeconds = seconds % 60;
-			if(remainderSeconds < 10)
-			{
-				$('#countdown').text(minutes + ':0' + remainderSeconds);
-			}
-			else
-			{
-				$('#countdown').text(minutes + ':' + remainderSeconds);
-			}
-		}
-	}
-
 
 function main(stations)
 {
@@ -102,7 +65,7 @@ function main(stations)
 		stations[user.station].totalStands.availabilities.stands &&
 		stations[user.station].status == "OPEN")
 		{
-			$('#sign').css('display','block');
+			$('#sign').css('visibility','visible');
 			booking(user, stations);
 		}
 		else if(!stations[user.station].totalStands.availabilities.stands)

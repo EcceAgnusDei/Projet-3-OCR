@@ -43,9 +43,9 @@ function booking (user, stations)
 		//On met à jour la liste des stations
 		stations[user.station].totalStands.availabilities.bikes += 1;
 		stations[user.station].totalStands.availabilities.stands -= 1;
-		//On réinitialise le timer en cas de 2eme réservation
-		clearInterval(countdown);
-		timer(20*60);
+		timer.clear();
+		timer.setSecondsLeft(20 * 60);
+		timer.launch();
 	});
 
 	function down()
