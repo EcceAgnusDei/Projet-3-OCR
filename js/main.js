@@ -1,4 +1,5 @@
 let timer = new Timer();
+let diapo = new Diaporama(document.querySelector('#diapo'));
 
 window.addEventListener('load', function(){
 		if (sessionStorage.getItem('state') == 'booked')
@@ -40,10 +41,12 @@ function main(stations)
 				if (stations[i].status == "OPEN")
 				{
 					$('#status').text("La stations est ouverte.");
+					$('#status').css("color", "green");
 				}
 				else
 				{
 					$('#status').text("La stations est fermée.");
+					$('#status').css("color", "red");
 				}
 			});
 		}

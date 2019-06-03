@@ -1,6 +1,12 @@
 body
 {
 	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.bold
+{
+	font-weight: bold;
 }
 
 /*****Header*****/
@@ -16,7 +22,6 @@ header
 
 header h1
 {
-	font-family: roboto, arial;
 	color: #e11f26;
 	align-self: flex-end;
 	margin: 0 0 15px 0;
@@ -56,10 +61,28 @@ header h1
 	background-color: purple;
 }
 
+.navigation
+{
+	height: 50px;
+	width: 50px;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 50%;
+	position: absolute;
+	text-align: center;
+	font-size: 30px;
+	color: white;
+}
+
+.navigation:hover
+{
+	cursor: pointer;
+	background-color: rgba(0,0,0, 0.8);
+}
 /*****Application*****/
 
 #appli
 {
+	height: 600px;
 	width: 70%;
 	margin: 50px auto;
 	display: flex;
@@ -70,7 +93,7 @@ header h1
 
 #map
 {
-	height: 500px;
+	height: 100%;
 	width: 70%;
 }
 
@@ -84,17 +107,43 @@ header h1
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: flex-start;
 }
 
 .station-info
 {
-	margin: 0 0 10px 0;
+	margin: 0;
+}
+
+.station-info:first-child
+{
+	height: 50px;
+}
+
+.station-info:nth-child(4)
+{
+	height: 15px;
 }
 
 .formular
 {
+	height: 150px;
+	width: 50%;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-self: center;
+}
+
+#prenom, #nom
+{
+	margin-bottom: 10px;
+}
+
+#reserve
+{
+	width: 70%;
+	margin: 0 auto;
 }
 
 #sign
@@ -102,6 +151,19 @@ header h1
 	display: block;
 	height: 50%;
 	border: solid 1px blue;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.sign-btns
+{
+	align-self: center;
+}
+
+.sign-btns *
+{
+	margin: 0 3px;
 }
 
 canvas
@@ -112,6 +174,22 @@ canvas
 	height: 85%;
 }
 
+input[type="button"]
+{
+	height: 30px;
+	background-color: #ec7478;
+	border: none;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+input[type="button"]:hover
+{
+	background-color: #e11f26;
+	cursor: pointer;
+}
+
+/*****Résumé*****/
 
 #summary
 {

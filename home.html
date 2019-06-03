@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="crossorigin="" />
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
 	<title>Vélo'v - Un Grand Lyon qui roule !</title>
 </head>
 <body>
@@ -27,18 +30,18 @@
 		<div id="map" class="map"></div>
 		<div id="reservation">
 			<div class="reservation-top">
-				<p class="station-info">Adress : <span id="address"></span></p>
-				<p class="station-info"><span id="bikes"></span> Places</p>
-				<p class="station-info"><span id="stands"></span> vélos disponibles</p>
-				<p class="station-info"><span id="status"></span></p>
-				<form action="recupereca.php" class="formular" method="post">
-					<label for="nom">Nom</label>
-					<input type="text" name="nom" id="nom" placeholder="Nom">
-					<label for="prenom">Prénom</label>
-					<input type="text" name="prenom" id="prenom" placeholder="Prenom">
-					<input type="button" name="reserve"  id="reserve" value="Réserver">
-				</form>
+				<p class="station-info">Adresse : <span id="address" class="bold"></span></p>
+				<p class="station-info">Places libres : <span id="bikes" class="bold"></span></p>
+				<p class="station-info">Vélo disponibles : <span id="stands" class="bold"></span></p>
+				<p class="station-info"><span id="status" class="bold"></span></p>
 			</div>
+			<form action="recupereca.php" class="formular" method="post">
+				<label for="nom">Nom</label>
+				<input type="text" name="nom" id="nom" placeholder="Nom">
+				<label for="prenom">Prénom</label>
+				<input type="text" name="prenom" id="prenom" placeholder="Prenom">
+				<input type="button" name="reserve"  id="reserve" value="Réserver">
+			</form>
 			<div id="sign">
 				<canvas id="sign-canvas">Votre navigateur est trop vieux...</canvas>
 				<div class="sign-btns">

@@ -61,42 +61,18 @@ class Diaporama
 	 	let prevButton = document.querySelector(".carousel-prev");
 	 	let pauseButton = document.querySelector(".carousel-pause");
 
-	 	nextButton.style.height = "50px";
-	 	nextButton.style.width = "50px";
-	 	nextButton.style.backgroundColor = "rgba(0,0,0,0.5)";
-	 	nextButton.style.borderRadius = "50%";
-	 	nextButton.style.position = "absolute";
 	 	nextButton.style.top = "45%";
 	 	nextButton.style.right = "30px";
-	 	nextButton.style.color = "white";
-	 	nextButton.style.textAlign = "center";
-	 	nextButton.style.fontSize = "30px";
 	 	nextButton.style.padding = "15px 6px 0 8px";
 	 	nextButton.innerHTML = "<i class='fas fa-chevron-right'></i>";
 
-	 	prevButton.style.height = "50px";
-	 	prevButton.style.width = "50px";
-	 	prevButton.style.backgroundColor = "rgba(0,0,0,0.5)";
-	 	prevButton.style.borderRadius = "50%";
-	 	prevButton.style.position = "absolute";
 	 	prevButton.style.top = "45%";
 	 	prevButton.style.left = "30px";
-	 	prevButton.style.color = "white";
-	 	prevButton.style.textAlign = "center";
-	 	prevButton.style.fontSize = "30px";
 	 	prevButton.style.padding = "15px 8px 0 6px";
 	 	prevButton.innerHTML = "<i class='fas fa-chevron-left'></i>";
 
-	 	pauseButton.style.height = "50px";
-	 	pauseButton.style.width = "50px";
-	 	pauseButton.style.backgroundColor = "rgba(0,0,0,0.5)";
-	 	pauseButton.style.borderRadius = "50%";
-	 	pauseButton.style.position = "absolute";
 	 	pauseButton.style.top = "80%";
 	 	pauseButton.style.right = "46%";
-	 	pauseButton.style.color = "white";
-	 	pauseButton.style.textAlign = "center";
-	 	pauseButton.style.fontSize = "30px";
 	 	pauseButton.style.padding = "15px 6px 0 8px";
 	 } 
 
@@ -106,9 +82,9 @@ class Diaporama
 	  * 
 	  */
 	 createNaviagtion () {
-	 	let nextButton = this.createDivWithClass('carousel-next');
-	 	let prevButton = this.createDivWithClass('carousel-prev');
-	 	let pauseButton = this.createDivWithClass('carousel-pause');
+	 	let nextButton = this.createDivWithClass('carousel-next navigation');
+	 	let prevButton = this.createDivWithClass('carousel-prev navigation');
+	 	let pauseButton = this.createDivWithClass('carousel-pause navigation');
 	 	this.root.appendChild(nextButton);
 	 	this.root.appendChild(prevButton);
 	 	this.root.appendChild(pauseButton);
@@ -213,8 +189,5 @@ class Diaporama
 	 	clearInterval(this.interval);
 	 	let pauseIcon = document.querySelector(".carousel-pause");
 	 	pauseIcon.innerHTML = "<i class='fas fa-play'></i>";	
-	 }
-	 
+	 } 
 }
-
-let diapo = new Diaporama(document.querySelector('#diapo'));
