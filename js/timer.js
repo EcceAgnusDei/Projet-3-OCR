@@ -14,13 +14,15 @@ class Timer
 	{
 		let minutes = Math.floor(seconds / 60);
 		let remainderSeconds = seconds % 60;
+
+		$('#countdown-min').text(minutes);
 		if(remainderSeconds < 10)
 		{
-			$('#countdown').text(minutes + ':0' + remainderSeconds);
+			$('#countdown-sec').text('0' + remainderSeconds);
 		}
 		else
 		{
-			$('#countdown').text(minutes + ':' + remainderSeconds);
+			$('#countdown-sec').text(remainderSeconds);
 		}
 	}
 

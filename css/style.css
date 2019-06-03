@@ -87,7 +87,6 @@ header h1
 	margin: 50px auto;
 	display: flex;
 	justify-content: space-between;
-	border: solid 1px black;
 	position: relative;
 }
 
@@ -99,10 +98,10 @@ header h1
 
 #reservation
 {
-	width: 25%;
+	width: 30%;
+	background-color: #ddd0d0;
 	margin: 0 auto;
-	border: solid 1px black;
-	visibility: visible;
+	visibility: hidden;
 	align-self: stretch;
 	display: flex;
 	flex-direction: column;
@@ -110,14 +109,14 @@ header h1
 	align-items: flex-start;
 }
 
+.reservation-top
+{
+	margin: 10px;
+}
+
 .station-info
 {
 	margin: 0;
-}
-
-.station-info:first-child
-{
-	height: 50px;
 }
 
 .station-info:nth-child(4)
@@ -148,9 +147,8 @@ header h1
 
 #sign
 {
-	display: block;
+	visibility: hidden;
 	height: 50%;
-	border: solid 1px blue;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -176,16 +174,17 @@ canvas
 
 input[type="button"]
 {
-	height: 30px;
-	background-color: #ec7478;
+	font-size: 1.1em;
+	height: 35px;
+	background-color: #ff4747;
 	border: none;
-	font-weight: bold;
-	border-radius: 4px;
+	border-radius: 3px;
+	border-bottom: #ff4747 4px solid;
 }
 
 input[type="button"]:hover
 {
-	background-color: #e11f26;
+	border-bottom: #b30000 4px solid;
 	cursor: pointer;
 }
 
@@ -193,11 +192,27 @@ input[type="button"]:hover
 
 #summary
 {
-	width: 70%;
+	width: 30%;
 	height: 200px;
-	background-color: cyan;
+	background-color: #ff4747;
+	border: 3px solid #b30000;
 	margin: auto;
-	visibility: visible;
+	visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 30px;
+	border-radius: 4px;
 }
 
+#summary p
+{
+	margin: 0;
+}
+
+#countdown
+{
+	font-size: 2em;
+}
 /***test commit***/
