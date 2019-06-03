@@ -1,6 +1,7 @@
 /**
  * Fonction permetant l'initialisation d'un élément canvas ainsi 
- * que le necessaire pour dessiner une signature.
+ * que le necessaire pour dessiner une signature. Il gère également les boutons
+ * d'envoie et d'annulation.
  * @param [Object] Correspond à la signatur de l'utilisateur
  * @param [Object] Correspond à la liste des stations fournie pas JCDecaux
  */
@@ -27,25 +28,37 @@ function booking (user, stations)
 	$('#redoit').click(clearCanvas);
 	$('#cancel').click(function(){
 		clearCanvas();
+		$('#sign').css('visibility','hidden');
+		$('#reservation').css('visibility','hidden');
 		});
 	$('#send').click(function(){
-		user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
-		clearCanvas();
+		//on vérifie si le canvas n'est pas vide
+		if(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data.some(channel => channel !== 0))
+		{
+			user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+			clearCanvas();
 
-		$('#summary').css('visibility','visible');
-		$('#sign').css('visibility','hidden');
-		$('#summary-address').text(stations[user.station].address);
+			$('#summary').css('visibility','visible');
+			$('#sign').css('visibility','hidden');
+			$('#reservation').css('visibility','hidden');
+			$('#summary-address').text(stations[user.station].address);
+			$('#isBooked').text('validée');
 
-		localStorage.setItem('nom', user.nom);
-		localStorage.setItem('prenom', user.prenom);
-		sessionStorage.setItem('station', stations[user.station].address);
-		sessionStorage.setItem('state', 'booked');
-		//On met à jour la liste des stations
-		stations[user.station].totalStands.availabilities.bikes += 1;
-		stations[user.station].totalStands.availabilities.stands -= 1;
-		timer.clear();
-		timer.setSecondsLeft(20 * 60);
-		timer.launch();
+			localStorage.setItem('nom', user.nom);
+			localStorage.setItem('prenom', user.prenom);
+			sessionStorage.setItem('station', stations[user.station].address);
+			sessionStorage.setItem('state', 'booked');
+			//On met à jour la liste des stations
+			stations[user.station].totalStands.availabilities.bikes += 1;
+			stations[user.station].totalStands.availabilities.stands -= 1;
+			timer.clear();
+			timer.setSecondsLeft(20 * 60);
+			timer.launch();
+		}
+		else
+		{
+			alert('Signez pour réserver');
+		}
 	});
 
 	function down()

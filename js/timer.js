@@ -4,10 +4,12 @@
 */
 class Timer
 {
-	constructor ()
+	constructor (countdownMin, countdownSec)
 	{
 		this.secondesLeft = 20 * 60;
 		this.countdown = setInterval(function() {}, 999999999);
+		this.countdownMin = countdownMin;
+		this.countdownSec = countdownSec;
 	}
 	
 	displayTimeLeft(seconds)
@@ -15,14 +17,14 @@ class Timer
 		let minutes = Math.floor(seconds / 60);
 		let remainderSeconds = seconds % 60;
 
-		$('#countdown-min').text(minutes);
+		$(this.countdownMin).text(minutes);
 		if(remainderSeconds < 10)
 		{
-			$('#countdown-sec').text('0' + remainderSeconds);
+			$(this.countdownSec).text('0' + remainderSeconds);
 		}
 		else
 		{
-			$('#countdown-sec').text(remainderSeconds);
+			$(this.countdownSec).text(remainderSeconds);
 		}
 	}
 

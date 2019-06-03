@@ -1,4 +1,4 @@
-let timer = new Timer();
+let timer = new Timer('#countdown-min','#countdown-sec');
 let diapo = new Diaporama(document.querySelector('#diapo'));
 
 window.addEventListener('load', function(){

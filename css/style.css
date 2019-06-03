@@ -9,6 +9,11 @@ body
 	font-weight: bold;
 }
 
+.red
+{
+	color: #e11f26;
+}
+
 /*****Header*****/
 header
 {
@@ -20,11 +25,13 @@ header
 	align-items: center;
 }
 
-header h1
+header p
 {
 	color: #e11f26;
 	align-self: flex-end;
 	margin: 0 0 15px 0;
+	font-weight: 700;
+	font-size: 2.6em;
 }
 
 /*****Diapositive*****/
@@ -38,7 +45,34 @@ header h1
 
 .item:first-child
 {
-	background-color: red;
+	background: url(img/diapo1.jpg) center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.diapo1
+{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+}
+
+h1
+{
+	font-size: 2.5em;
+	font-weight: 700;
+	margin: 100px 50px;
+}
+
+.diapo1-l1
+{
+	align-self: flex-end;
+	font-size: 2em;
+	margin: 100px 50px;
+	font-weight: 700;
 }
 
 .item:nth-child(2)
@@ -88,6 +122,7 @@ header h1
 	display: flex;
 	justify-content: space-between;
 	position: relative;
+	background-color: #ddd0d0;
 }
 
 #map
@@ -99,7 +134,6 @@ header h1
 #reservation
 {
 	width: 30%;
-	background-color: #ddd0d0;
 	margin: 0 auto;
 	visibility: hidden;
 	align-self: stretch;
@@ -137,6 +171,7 @@ header h1
 #prenom, #nom
 {
 	margin-bottom: 10px;
+	font-size: 0.9em;
 }
 
 #reserve
@@ -152,6 +187,8 @@ header h1
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-self: center;
+	margin-bottom: 10px;
 }
 
 .sign-btns
@@ -170,6 +207,7 @@ canvas
 	display: block;
 	width: 100%;
 	height: 85%;
+	background-color: white;
 }
 
 input[type="button"]
@@ -194,8 +232,8 @@ input[type="button"]:hover
 {
 	width: 30%;
 	height: 200px;
-	background-color: #ff4747;
-	border: 3px solid #b30000;
+	background-color: #ddd0d0;
+	border: 1px solid #b30000;
 	margin: auto;
 	visibility: hidden;
 	display: flex;
