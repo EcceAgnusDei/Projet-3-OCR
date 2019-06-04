@@ -77,17 +77,87 @@ h1
 
 .item:nth-child(2)
 {
-	background-color: blue;
+	background: url(img/diapo2.jpg) center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	position: relative;
+}
+
+.diapo2-l1
+{
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 0;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.diapo2-l2
+{
+	position: absolute;
+	top: 53%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.5em;
+	text-align: center;
 }
 
 .item:nth-child(3)
 {
-	background-color: grey;
+	background: url(img/diapo3.jpg) center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.diapo3-l1
+{
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 2em;
+	margin-right: 20%;
+}
+
+.diapo3-l2
+{
+	margin: 0;
+	font-weight: bold;
+	font-size: 1.6em;
+	margin-right: 10%;
+	width: 40%;
+	text-align: center;
 }
 
 .item:nth-child(4)
 {
-	background-color: pink;
+	background-color: #ddd0d0;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.diapo4-img
+{
+	height: 80%;
+	margin-left: 20px;
+}
+
+.diapo4-text
+{
+	margin: 10px 30px;
+	font-weight: bold;
+	font-size: 1.6em;
+	text-align: center;
 }
 
 .item:nth-child(5)
@@ -117,7 +187,7 @@ h1
 #appli
 {
 	height: 600px;
-	width: 70%;
+	width: 80%;
 	margin: 50px auto;
 	display: flex;
 	justify-content: space-between;
@@ -253,4 +323,3 @@ input[type="button"]:hover
 {
 	font-size: 2em;
 }
-/***test commit***/

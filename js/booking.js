@@ -32,9 +32,6 @@ function booking (user, stations)
 		$('#reservation').css('visibility','hidden');
 		});
 	$('#send').click(function(){
-		//on vérifie si le canvas n'est pas vide
-		if(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data.some(channel => channel !== 0))
-		{
 			user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
 			clearCanvas();
 
@@ -54,11 +51,6 @@ function booking (user, stations)
 			timer.clear();
 			timer.setSecondsLeft(20 * 60);
 			timer.launch();
-		}
-		else
-		{
-			alert('Signez pour réserver');
-		}
 	});
 
 	function down()

@@ -81,7 +81,7 @@ function main(stations)
 		}
 		else
 		{
-			alert("Veuiller entrez votre nom est prénom.");
+			alert("Veuiller entrer votre nom est prénom.");
 		}	
 	});
 
