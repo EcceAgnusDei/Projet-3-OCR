@@ -72,7 +72,8 @@ class Diaporama
 	 	prevButton.innerHTML = "<i class='fas fa-chevron-left'></i>";
 
 	 	pauseButton.style.top = "80%";
-	 	pauseButton.style.right = "46%";
+	 	pauseButton.style.right = "50%";
+	 	pauseButton.style.transform = "translateX(50%)";
 	 	pauseButton.style.padding = "15px 6px 0 8px";
 	 } 
 
