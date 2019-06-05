@@ -40,12 +40,12 @@ function main(stations)
 				$('#reservation').css('visibility','visible');
 				if (stations[i].status == "OPEN")
 				{
-					$('#status').text("La stations est ouverte.");
+					$('#status').text("La station est ouverte.");
 					$('#status').css("color", "green");
 				}
 				else
 				{
-					$('#status').text("La stations est fermée.");
+					$('#status').text("La station est fermée.");
 					$('#status').css("color", "red");
 				}
 			});
@@ -81,8 +81,16 @@ function main(stations)
 		}
 		else
 		{
-			alert("Veuiller entrer votre nom est prénom.");
+			alert("Veuiller entrer votre nom et prénom.");
 		}	
+	});
+
+	$('#cancel2').click(function (){
+		sessionStorage.setItem('state', 'unbooked');
+		sessionStorage.setItem('time left', '-1');
+		sessionStorage.setItem('station', '');
+		timer.clear();
+		$('#summary').css('visibility', 'hidden');
 	});
 
 	/**
@@ -98,10 +106,39 @@ function main(stations)
             minZoom: 10,
             maxZoom: 20
 		}).addTo(maCarte);
+		let redIcon = L.icon({
+			iconUrl: "http://mondoloni-dev.fr/velov/css/img/red-marker.png",
+			iconSize: [50, 50],
+			iconAnchor: [25, 50],
+			popupAnchor: [-3, -76]
+		});
+		let greenIcon = L.icon({
+			iconUrl: "http://mondoloni-dev.fr/velov/css/img/green-marker.png",
+			iconSize: [50, 50],
+			iconAnchor: [25, 50],
+			popupAnchor: [-3, -76]
+		});
+		let orangeIcon = L.icon({
+			iconUrl: "http://mondoloni-dev.fr/velov/css/img/orange-marker.png",
+			iconSize: [50, 50],
+			iconAnchor: [25, 50],
+			popupAnchor: [-3, -76]
+		});
 
 		for (let i = 0, c = stations.length; i < c; i++)
 		{
-			marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude]);
+			if(stations[i].status != "OPEN" || stations[i].totalStands.availabilities.stands == 0)
+			{
+				marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude], { icon: redIcon });
+			}
+			else if(stations[i].totalStands.availabilities.stands <= 2)
+			{
+				marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude], { icon: orangeIcon });
+			}
+			else
+			{
+				marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude], { icon: greenIcon });
+			}
 			markerClusters.addLayer(marker[i]);
 		}
 		maCarte.addLayer(markerClusters);

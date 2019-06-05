@@ -14,15 +14,30 @@ function booking (user, stations)
 	let brushYPoints = [];
 	let brushDownPos = [];
 
-	canvas.style.cursor = "crosshair"
-	canvas.addEventListener("mousedown", down);
-	canvas.addEventListener("mouseup", toggledraw);
-	canvas.addEventListener("mousemove", function(evt) {
+	canvas.style.cursor = "crosshair";
+	//canvas.addEventListener("mousedown", down);
+	//canvas.addEventListener("mouseup", toggledraw);
+	canvas.addEventListener("touchend", function (){
+		brushXPoints = [];
+   		brushYPoints = [];
+   		brushDownPos = [];
+	});
+	/*canvas.addEventListener("mousemove", function(evt) {
 		var mousePos = getMousePos(canvas, evt);
 		var posx = mousePos.x;
 		var posy = mousePos.y;
 		addBrushPoint(posx, posy, md);
 		draw();
+	});*/
+	canvas.addEventListener("touchmove", function(evt) {
+		evt.preventDefault();
+		var mousePos = getTouchPos(canvas, evt);
+		var posx = mousePos.x;
+		var posy = mousePos.y;
+		addBrushPoint(posx, posy, true);
+		draw();
+		console.log(evt.touches[0].clientX);
+		console.log(evt.touches[0].clientY);
 	});
 
 	$('#redoit').click(clearCanvas);
@@ -31,6 +46,7 @@ function booking (user, stations)
 		$('#sign').css('visibility','hidden');
 		$('#reservation').css('visibility','hidden');
 		});
+
 	$('#send').click(function(){
 			user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
 			clearCanvas();
@@ -38,6 +54,7 @@ function booking (user, stations)
 			$('#summary').css('visibility','visible');
 			$('#sign').css('visibility','hidden');
 			$('#reservation').css('visibility','hidden');
+			$('#cancel2').css('display','block');
 			$('#summary-address').text(stations[user.station].address);
 			$('#isBooked').text('validée');
 
@@ -77,6 +94,14 @@ function booking (user, stations)
       };
 	}
 	
+	function getTouchPos(canvas, evt)
+	{
+		let rect = canvas.getBoundingClientRect();
+		return { x: (evt.touches[0].clientX - rect.left) * (canvas.width  / rect.width),
+        y: (evt.touches[0].clientY - rect.top)  * (canvas.height / rect.height)
+      };
+	}
+
 	/**
 	 * Fonction permettant de dessiner sur un click de souris 
 	 */
@@ -105,16 +130,14 @@ function booking (user, stations)
 		brushXPoints.push(x);
 		brushYPoints.push(y);
    		// Stock la valeur true si la souris est clickée
-  	  	brushDownPos.push(md);
-	}
+   		brushDownPos.push(md);
+   	}
 
-	function clearCanvas()
-	{
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		brushXPoints = [];
-		brushYPoints = [];
-		brushDownPos = [];
-	}
+   	function clearCanvas()
+   	{
+   		ctx.clearRect(0, 0, canvas.width, canvas.height);
+   		brushXPoints = [];
+   		brushYPoints = [];
+   		brushDownPos = [];
+   	}
 }
-
-//if(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data.some(channel => channel !== 0))

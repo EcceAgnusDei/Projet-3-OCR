@@ -40,6 +40,7 @@ class Timer
 				sessionStorage.setItem('state', 'unbooked');
 				$('#isBooked').text('expirée');
 				$('#timeleft').css('visibility', 'hidden');
+				$('#cancel2').css('display', 'none');
 				return;
 			}
 			this.displayTimeLeft(this.secondsLeft);

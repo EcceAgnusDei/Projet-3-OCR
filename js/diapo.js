@@ -53,9 +53,9 @@ class Diaporama
 	 		child.style.position = "absolute";
 	 		child.style.top = "0";
 	 		child.style.left = "0";
-	 		child.style.opacity = "0";
+	 		child.style.display = "none";
 	 	});
-	 	this.children[0].style.opacity = "1";
+	 	this.children[0].style.display = "block";
 
 	 	let nextButton = document.querySelector(".carousel-next");
 	 	let prevButton = document.querySelector(".carousel-prev");
@@ -135,15 +135,15 @@ class Diaporama
 	 {
 	 	if(this.currentSlide<this.children.length-1)
 	 	{
-	 		this.children[this.currentSlide].style.opacity = "0";
+	 		this.children[this.currentSlide].style.display = "none";
 	 		this.currentSlide++;
-	 		this.children[this.currentSlide].style.opacity = "1";
+	 		this.children[this.currentSlide].style.display = "block";
 	 	}
 	 	else
 	 	{
-	 		this.children[this.currentSlide].style.opacity = "0";
+	 		this.children[this.currentSlide].style.display = "none";
 	 		this.currentSlide = 0;
-	 		this.children[this.currentSlide].style.opacity = "1";
+	 		this.children[this.currentSlide].style.display = "block";
 	 	}
 	 }
 
@@ -155,15 +155,15 @@ class Diaporama
 	 {
 	 	if(this.currentSlide>0)
 	 	{
-	 		this.children[this.currentSlide].style.opacity = "0";
+	 		this.children[this.currentSlide].style.display = "none";
 	 		this.currentSlide--;
-	 		this.children[this.currentSlide].style.opacity = "1";
+	 		this.children[this.currentSlide].style.display = "block";
 	 	}
 	 	else
 	 	{
-	 		this.children[this.currentSlide].style.opacity = "0";
-	 		this.currentSlide = 4;
-	 		this.children[this.currentSlide].style.opacity = "1";
+	 		this.children[this.currentSlide].style.display = "none";
+	 		this.currentSlide = this.children.length - 1;
+	 		this.children[this.currentSlide].style.display = "block";
 	 	}
 	 }
 
