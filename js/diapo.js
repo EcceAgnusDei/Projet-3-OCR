@@ -186,7 +186,7 @@ class Diaporama
 	 play ()
 	 {
 	 	this.isPlaying = true;
-	 	this.interval = setInterval(this.next.bind(this), 2000);
+	 	this.interval = setInterval(this.next.bind(this), 5000);
 	 	let pauseIcon = document.querySelector(".carousel-pause");
 	 	pauseIcon.innerHTML = "<i class='fas fa-pause'></i>";
 	 }
