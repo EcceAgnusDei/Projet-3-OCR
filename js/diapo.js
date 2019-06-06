@@ -60,6 +60,17 @@ class Diaporama
 	 	let nextButton = document.querySelector(".carousel-next");
 	 	let prevButton = document.querySelector(".carousel-prev");
 	 	let pauseButton = document.querySelector(".carousel-pause");
+	 	let navButton = document.querySelectorAll(".navigation");
+
+	 	navButton.forEach(function (e){
+	 		e.style.height = "50px";
+	 		e.style.width = "50px";
+	 		e.style.borderRadius = "50%";
+	 		e.style.position = "absolute";
+	 		e.style.fontSize = "30px";
+	 		e.style.textAlign = "center";
+	 		e.style.color = "white";
+	 	});
 
 	 	nextButton.style.top = "45%";
 	 	nextButton.style.right = "30px";

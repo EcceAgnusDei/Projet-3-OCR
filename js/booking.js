@@ -15,29 +15,27 @@ function booking (user, stations)
 	let brushDownPos = [];
 
 	canvas.style.cursor = "crosshair";
-	//canvas.addEventListener("mousedown", down);
-	//canvas.addEventListener("mouseup", toggledraw);
+	canvas.addEventListener("mousedown", down);
+	canvas.addEventListener("mouseup", toggledraw);
 	canvas.addEventListener("touchend", function (){
 		brushXPoints = [];
    		brushYPoints = [];
    		brushDownPos = [];
 	});
-	/*canvas.addEventListener("mousemove", function(evt) {
-		var mousePos = getMousePos(canvas, evt);
-		var posx = mousePos.x;
-		var posy = mousePos.y;
+	canvas.addEventListener("mousemove", function(evt) {
+		let mousePos = getMousePos(canvas, evt);
+		let posx = mousePos.x;
+		let posy = mousePos.y;
 		addBrushPoint(posx, posy, md);
 		draw();
-	});*/
+	});
 	canvas.addEventListener("touchmove", function(evt) {
 		evt.preventDefault();
-		var mousePos = getTouchPos(canvas, evt);
-		var posx = mousePos.x;
-		var posy = mousePos.y;
+		let mousePos = getTouchPos(canvas, evt);
+		let posx = mousePos.x;
+		let posy = mousePos.y;
 		addBrushPoint(posx, posy, true);
 		draw();
-		console.log(evt.touches[0].clientX);
-		console.log(evt.touches[0].clientY);
 	});
 
 	$('#redoit').click(clearCanvas);
@@ -46,7 +44,6 @@ function booking (user, stations)
 		$('#sign').css('visibility','hidden');
 		$('#reservation').css('visibility','hidden');
 		});
-
 	$('#send').click(function(){
 			user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
 			clearCanvas();
