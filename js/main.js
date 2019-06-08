@@ -23,16 +23,29 @@ function main(stations)
 	
 	let lat = 45.7655556;
 	let lon = 4.83277777;
-	let maCarte = null;
-	let marker = [];
-	let markerClusters; //Groupe de markers
 	let user = {nom: '', prenom: '', signature: null, station: -1};
 
-	initMap(stations);
+	let map = new OSMap(lat, lon);
+	for (let station of stations)
+		{
+			if(station.status != "OPEN" || station.totalStands.availabilities.stands == 0)
+			{
+				map.setRedMarker(station.position);
+			}
+			else if(station.totalStands.availabilities.stands <= 2)
+			{
+				map.setOrangeMarker(station.position);
+			}
+			else
+			{
+				map.setGreenMarker(station.position);
+			}
+		}
+	map.setMarkerClusters();
 
 	for (let i = 0, c = stations.length; i < c; i++)
 		{
-			marker[i].addEventListener("click", function(){
+			map.marker[i].addEventListener("click", function(){
 				$('#address').text(stations[i].address);
 				$('#bikes').text(stations[i].totalStands.availabilities.bikes);
 				$('#stands').text(stations[i].totalStands.availabilities.stands);
@@ -92,55 +105,4 @@ function main(stations)
 		timer.clear();
 		$('#summary').css('visibility', 'hidden');
 	});
-
-	/**
-	 * Unitialise la carte openstreetmap
-	 * @param  {Object} stations Object contenant toutes les informations des stations
-	 */
-	function initMap(stations)
-	{
-		maCarte = L.map('map').setView([lat, lon], 11);
-		markerClusters = L.markerClusterGroup();
-		L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-			attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-            minZoom: 10,
-            maxZoom: 20
-		}).addTo(maCarte);
-		let redIcon = L.icon({
-			iconUrl: "http://mondoloni-dev.fr/velov/css/img/red-marker.png",
-			iconSize: [50, 50],
-			iconAnchor: [25, 50],
-			popupAnchor: [-3, -76]
-		});
-		let greenIcon = L.icon({
-			iconUrl: "http://mondoloni-dev.fr/velov/css/img/green-marker.png",
-			iconSize: [50, 50],
-			iconAnchor: [25, 50],
-			popupAnchor: [-3, -76]
-		});
-		let orangeIcon = L.icon({
-			iconUrl: "http://mondoloni-dev.fr/velov/css/img/orange-marker.png",
-			iconSize: [50, 50],
-			iconAnchor: [25, 50],
-			popupAnchor: [-3, -76]
-		});
-
-		for (let i = 0, c = stations.length; i < c; i++)
-		{
-			if(stations[i].status != "OPEN" || stations[i].totalStands.availabilities.stands == 0)
-			{
-				marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude], { icon: redIcon });
-			}
-			else if(stations[i].totalStands.availabilities.stands <= 2)
-			{
-				marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude], { icon: orangeIcon });
-			}
-			else
-			{
-				marker[i] = L.marker([stations[i].position.latitude, stations[i].position.longitude], { icon: greenIcon });
-			}
-			markerClusters.addLayer(marker[i]);
-		}
-		maCarte.addLayer(markerClusters);
-	}
 }
