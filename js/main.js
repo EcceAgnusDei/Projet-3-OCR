@@ -50,7 +50,7 @@ function main(stations)
 				$('#bikes').text(stations[i].totalStands.availabilities.bikes);
 				$('#stands').text(stations[i].totalStands.availabilities.stands);
 				user.station = i;
-				$('#reservation').css('visibility','visible');
+				$('#reservation').css('display','flex');
 				if (stations[i].status == "OPEN")
 				{
 					$('#status').text("La station est ouverte.");

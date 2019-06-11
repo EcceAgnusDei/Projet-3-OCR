@@ -202,20 +202,30 @@ h1
 #map
 {
 	height: 100%;
-	width: 70%;
 	z-index: 1;
 }
 
 #reservation
 {
-	width: 30%;
 	margin: 0 auto;
-	visibility: hidden;
 	align-self: stretch;
-	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
+	display: none;
+}
+
+@media (min-width: 720px)
+{
+	#map
+	{
+		flex: 2;
+	}
+
+	#reservation
+	{
+		flex: 1;
+	}
 }
 
 .reservation-top
@@ -241,6 +251,7 @@ h1
 	flex-direction: column;
 	justify-content: center;
 	align-self: center;
+	margin: auto;
 }
 
 #prenom, #nom

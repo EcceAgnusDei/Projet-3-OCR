@@ -42,7 +42,7 @@ function booking (user, stations)
 	$('#cancel').click(function(){
 		clearCanvas();
 		$('#sign').css('visibility','hidden');
-		$('#reservation').css('visibility','hidden');
+		$('#reservation').css('display','none');
 		});
 	$('#send').click(function(){
 			user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
@@ -50,7 +50,7 @@ function booking (user, stations)
 
 			$('#summary').css('visibility','visible');
 			$('#sign').css('visibility','hidden');
-			$('#reservation').css('visibility','hidden');
+			$('#reservation').css('display','none');
 			$('#cancel2').css('display','block');
 			$('#summary-address').text(stations[user.station].address);
 			$('#isBooked').text('validée');
