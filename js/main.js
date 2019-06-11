@@ -86,15 +86,18 @@ function main(stations)
 		}
 		else if(!stations[user.station].totalStands.availabilities.stands)
 		{
-			alert("Aucun vélo disponible, veuillez chosir une autre station.");
+			$('.modal').css('display', 'flex');
+			$('.modal-text').text("Aucun vélo disponible, veuillez chosir une autre station.");
 		}
 		else if(stations[user.station].status != "OPEN")
 		{
-			alert("Désolé, la station est fermée");
+			$('.modal').css('display', 'flex');
+			$('.modal-text').text("Désolé, la station est fermée");
 		}
 		else
 		{
-			alert("Veuiller entrer votre nom et prénom.");
+			$('.modal').css('display', 'flex');
+			$('.modal-text').text("Veuillez entrer votre nom et prénom.");
 		}	
 	});
 
@@ -104,5 +107,9 @@ function main(stations)
 		sessionStorage.setItem('station', '');
 		timer.clear();
 		$('#summary').css('visibility', 'hidden');
+	});
+
+	$('.close').click(function () {
+		$('.modal').css('display','none');
 	});
 }

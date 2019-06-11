@@ -1,7 +1,11 @@
+/**
+ * Classe implémentant un diaporama préconçu. Il suffit de l'instancier en mettant en paramètre
+ * l'id de l'élément parent dans lequel se trouvent les slides du diaporama 
+ */
 class Diaporama
 {
 	/**
-	 * @param {HTMLElement} element dans lequel sera implémenté le panorama
+	 * @param {HTMLElement} Element dans lequel sera implémenté le panorama
 	 * 
 	 */
 	 constructor (element)

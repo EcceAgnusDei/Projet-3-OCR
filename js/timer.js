@@ -1,9 +1,13 @@
 /**
 * Classe permetant le décompte et son affichage
-* @param {Number} secondsLeft Nombre de secondes avant fin du décompte
+* 
 */
 class Timer
 {
+	/**
+	 * @param {string} countdownMin Cible de l'élément dans lequel on souhaite afficher les minutes
+	 * @param {string} countdownSec Cible de l'élément dans lequel on souhaite afficher les secondes
+	 */
 	constructor (countdownMin, countdownSec)
 	{
 		this.secondesLeft = 20 * 60;
@@ -12,6 +16,9 @@ class Timer
 		this.countdownSec = countdownSec;
 	}
 	
+	/**
+	 * Permet d'afficher le temps restant
+	 */
 	displayTimeLeft(seconds)
 	{
 		let minutes = Math.floor(seconds / 60);
@@ -28,6 +35,9 @@ class Timer
 		}
 	}
 
+	/**
+	 * Permet de lancer le décompte
+	 */
 	launch()
 	{
 		this.countdown = setInterval(function(){
@@ -47,6 +57,9 @@ class Timer
 		}.bind(this), 1000);
 	}
 
+	/**
+	 * Initialise le nombre de secondes restantes
+	 */
 	setSecondsLeft(secondsLeft)
 	{
 		this.secondsLeft = secondsLeft;
