@@ -28,7 +28,7 @@ function main(stations)
 	let map = new OSMap(lat, lon);
 	for (let station of stations)
 		{
-			if(station.status != "OPEN" || station.totalStands.availabilities.stands == 0)
+			if(station.status !== "OPEN" || station.totalStands.availabilities.stands === 0)
 			{
 				map.setRedMarker(station.position);
 			}
