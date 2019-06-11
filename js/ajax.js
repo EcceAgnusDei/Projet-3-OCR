@@ -1,7 +1,6 @@
 /**
- * [Exécute un appel AJAX GET]
- * @param  {String}   url      [l'URL cible]
- * @return {String} [Renvoie le paquet reçu sous forme de text]
+ * Exécute un appel AJAX GET et passe la réponse dans la fonction callback
+ * @param  {String}   url  l'URL cible
  */
 function ajaxGet(url, callback) {
     var req = new XMLHttpRequest();

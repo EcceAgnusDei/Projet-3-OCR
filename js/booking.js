@@ -2,8 +2,8 @@
  * Fonction permetant l'initialisation d'un élément canvas ainsi 
  * que le necessaire pour dessiner une signature. Il gère également les boutons
  * d'envoie et d'annulation.
- * @param [Object] Correspond à la signatur de l'utilisateur
- * @param [Object] Correspond à la liste des stations fournie pas JCDecaux
+ * @param [Object] Objet littéral contenant les informations de l'utilisateur
+ * @param [Object] Correspond à la liste des stations fournies pas JCDecaux
  */
 function booking (user, stations)
 {
@@ -14,6 +14,7 @@ function booking (user, stations)
 	let brushYPoints = [];
 	let brushDownPos = [];
 
+	//Configuration du canvas pour la signature
 	canvas.style.cursor = "crosshair";
 	canvas.addEventListener("mousedown", down);
 	canvas.addEventListener("mouseup", toggledraw);
@@ -38,6 +39,7 @@ function booking (user, stations)
 		draw();
 	});
 
+	//Configuration des boutons
 	$('#redoit').click(clearCanvas);
 	$('#cancel').click(function(){
 		clearCanvas();
@@ -67,11 +69,12 @@ function booking (user, stations)
 			timer.launch();
 	});
 
+	//Définit le bouléan mouse down sur true
 	function down()
 	{
 		md = true;
 	}
-
+	//Définit le bouléan mouse down sur false
 	function toggledraw()
 	{
 		md = false;
@@ -90,7 +93,13 @@ function booking (user, stations)
         y: (evt.clientY - rect.top)  * (canvas.height / rect.height)
       };
 	}
-	
+
+	/**
+	 * Fonction permettant de calculer la position du doigt dans le canvas
+	 * @param  {Object} canvas 
+	 * @param  {Event} evt    
+	 * @return {Object} Coordonnées x et y sous forme d'objet
+	 */
 	function getTouchPos(canvas, evt)
 	{
 		let rect = canvas.getBoundingClientRect();

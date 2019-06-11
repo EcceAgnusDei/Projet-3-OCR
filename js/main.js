@@ -1,6 +1,7 @@
 let timer = new Timer('#countdown-min','#countdown-sec');
 let diapo = new Diaporama(document.querySelector('#diapo'));
 
+//Vérification de l'état de la réservation au rafraichissement de la page
 window.addEventListener('load', function(){
 		if (sessionStorage.getItem('state') == 'booked')
 		{
@@ -17,6 +18,7 @@ ajaxGet(
 	"https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=059b2d915baa90c9e9351f259d71d05425d2aa90",
 	main);
 
+//On passe dans la fonction main la réponse de la requête ajax
 function main(stations)
 {
 	stations = JSON.parse(stations);
