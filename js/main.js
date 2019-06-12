@@ -84,12 +84,12 @@ function main(stations)
 		stations[user.station].status == "OPEN")
 		{
 			$('#sign').css('visibility','visible');
-			booking(user, stations);
+			booking();
 		}
 		else if(!stations[user.station].totalStands.availabilities.stands)
 		{
 			$('.modal').css('display', 'flex');
-			$('.modal-text').text("Aucun vélo disponible, veuillez chosir une autre station.");
+			$('.modal-text').text("Aucun vélo disponible, veuillez choisir une autre station.");
 		}
 		else if(stations[user.station].status != "OPEN")
 		{
@@ -113,5 +113,36 @@ function main(stations)
 
 	$('.close').click(function () {
 		$('.modal').css('display','none');
+	});
+
+	$('#redoit').click(clearCanvas);
+	$('#cancel').click(function(){
+		clearCanvas();
+		console.log("coucou");
+		$('#sign').css('visibility','hidden');
+		$('#reservation').css('display','none');
+		});
+	$('#send').click(function(){
+		user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+		clearCanvas();
+
+		$('#summary').css('visibility','visible');
+		$('#sign').css('visibility','hidden');
+		$('#reservation').css('display','none');
+		$('#cancel2').css('display','block');
+		$('#summary-address').text(stations[user.station].address);
+		$('#isBooked').text('validée');
+
+		localStorage.setItem('nom', user.nom);
+		localStorage.setItem('prenom', user.prenom);
+		sessionStorage.setItem('station', stations[user.station].address);
+		sessionStorage.setItem('state', 'booked');
+		//On met à jour la liste des stations
+		stations[user.station].totalStands.availabilities.bikes++;
+		stations[user.station].totalStands.availabilities.stands--;
+		console.log(stations[user.station].totalStands.availabilities.bikes);
+		timer.clear();
+		timer.setSecondsLeft(20 * 60);
+		timer.launch();
 	});
 }
