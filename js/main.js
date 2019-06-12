@@ -118,7 +118,6 @@ function main(stations)
 	$('#redoit').click(clearCanvas);
 	$('#cancel').click(function(){
 		clearCanvas();
-		console.log("coucou");
 		$('#sign').css('visibility','hidden');
 		$('#reservation').css('display','none');
 		});
@@ -140,7 +139,6 @@ function main(stations)
 		//On met à jour la liste des stations
 		stations[user.station].totalStands.availabilities.bikes++;
 		stations[user.station].totalStands.availabilities.stands--;
-		console.log(stations[user.station].totalStands.availabilities.bikes);
 		timer.clear();
 		timer.setSecondsLeft(20 * 60);
 		timer.launch();
