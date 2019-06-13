@@ -47,48 +47,52 @@
 		</div>
 	</section>
 
-	<section id="appli">
-		<div id="map" class="map"></div>
-		<div id="reservation">
-			<div class="reservation-top">
-				<p class="station-info">Adresse : <span id="address" class="bold"></span></p>
-				<p class="station-info">Places libres : <span id="bikes" class="bold"></span></p>
-				<p class="station-info">Vélos disponibles : <span id="stands" class="bold"></span></p>
-				<p class="station-info"><span id="status" class="bold"></span></p>
-			</div>
-			<form action="recupereca.php" class="formular" method="post">
-				<label for="nom">Nom</label>
-				<input type="text" name="nom" id="nom" placeholder="Nom">
-				<label for="prenom">Prénom</label>
-				<input type="text" name="prenom" id="prenom" placeholder="Prenom">
-				<input type="button" name="reserve"  id="reserve" value="Réserver">
-			</form>
-			<div id="sign">
-				<canvas id="sign-canvas">Votre navigateur est trop vieux...</canvas>
-				<div class="sign-btns">
-					<input type="button" name="redoit" id="redoit" value="Recommencer"/>
-					<input type="button" name="cancel" id="cancel" value="Annuler"/>
-					<input type="button" name="send" id="send" value="Envoyer"/>
+	<section>
+		<h2 class="hidden">Réservez votre vélo</h2>
+		<div id="appli">
+			<div id="map" class="map"></div>
+				<div id="reservation">
+					<div class="reservation-top">
+						<p class="station-info">Adresse : <span id="address" class="bold"></span></p>
+						<p class="station-info">Places libres : <span id="bikes" class="bold"></span></p>
+						<p class="station-info">Vélos disponibles : <span id="stands" class="bold"></span></p>
+						<p class="station-info"><span id="status" class="bold"></span></p>
+					</div>
+					<form action="recupereca.php" class="formular" method="post">
+						<label for="nom">Nom</label>
+						<input type="text" name="nom" id="nom" placeholder="Nom">
+						<label for="prenom">Prénom</label>
+						<input type="text" name="prenom" id="prenom" placeholder="Prenom">
+						<input type="button" name="reserve"  id="reserve" value="Réserver">
+					</form>
+					<div id="sign">
+						<canvas id="sign-canvas">Votre navigateur est trop vieux...</canvas>
+						<div class="sign-btns">
+							<input type="button" name="redoit" id="redoit" value="Recommencer"/>
+							<input type="button" name="cancel" id="cancel" value="Annuler"/>
+							<input type="button" name="send" id="send" value="Envoyer"/>
+						</div>
+					</div>
+				</div>
+				<div class="legende">
+					<figure>
+						<img src="css/img/green-marker.png" alt="">
+						<figcaption>Plusieurs vélos</figcaption>
+					</figure>
+					<figure>
+						<img src="css/img/orange-marker.png" alt="">
+						<figcaption>Peu de vélos</figcaption>
+					</figure>
+					<figure>
+						<img src="css/img/red-marker.png" alt="">
+						<figcaption>Aucun vélo</figcaption>
+					</figure>
 				</div>
 			</div>
-		</div>
-		<div class="legende">
-			<figure>
-				<img src="css/img/green-marker.png" alt="">
-				<figcaption>Plusieurs vélos</figcaption>
-			</figure>
-			<figure>
-				<img src="css/img/orange-marker.png" alt="">
-				<figcaption>Peu de vélos</figcaption>
-			</figure>
-			<figure>
-				<img src="css/img/red-marker.png" alt="">
-				<figcaption>Aucun vélo</figcaption>
-			</figure>
-		</div>
 	</section>
 
 	<section id="summary">
+		<h2>Récapitulatif de votre réservation</h2>
 		<p>Votre réservation est <span id="isBooked">validée</span>.</p> 
 		<p>Adresse : <span id="summary-address" class="bold"></span></p>
 		<p id="timeleft">La réservation expire dans : </p>

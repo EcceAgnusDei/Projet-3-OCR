@@ -125,25 +125,33 @@ function main(stations)
 		$('#reservation').css('display','none');
 		});
 	$('#send').click(function(){
-		user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
-		clearCanvas();
+		if(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data.some(channel => channel !== 0))
+		{
+			user.signature = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+			clearCanvas();
 
-		$('#summary').css('visibility','visible');
-		$('#sign').css('visibility','hidden');
-		$('#reservation').css('display','none');
-		$('#cancel2').css('display','block');
-		$('#summary-address').text(stations[user.station].address);
-		$('#isBooked').text('validée');
+			$('#summary').css('visibility','visible');
+			$('#sign').css('visibility','hidden');
+			$('#reservation').css('display','none');
+			$('#cancel2').css('display','block');
+			$('#summary-address').text(stations[user.station].address);
+			$('#isBooked').text('validée');
 
-		localStorage.setItem('nom', user.nom);
-		localStorage.setItem('prenom', user.prenom);
-		sessionStorage.setItem('station', stations[user.station].address);
-		sessionStorage.setItem('state', 'booked');
-		//On met à jour la liste des stations
-		stations[user.station].totalStands.availabilities.bikes++;
-		stations[user.station].totalStands.availabilities.stands--;
-		timer.clear();
-		timer.setSecondsLeft(20 * 60);
-		timer.launch();
+			localStorage.setItem('nom', user.nom);
+			localStorage.setItem('prenom', user.prenom);
+			sessionStorage.setItem('station', stations[user.station].address);
+			sessionStorage.setItem('state', 'booked');
+			//On met à jour la liste des stations
+			stations[user.station].totalStands.availabilities.bikes++;
+			stations[user.station].totalStands.availabilities.stands--;
+			timer.clear();
+			timer.setSecondsLeft(20 * 60);
+			timer.launch();
+		}
+		else
+		{
+			$('.modal').css('display', 'flex');
+			$('.modal-text').text("Vous devez signer pour réserver.");
+		}
 	});
 }

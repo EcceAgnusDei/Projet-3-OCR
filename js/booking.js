@@ -117,13 +117,6 @@ function clearCanvas()
  */
 function booking ()
 {
-	let canvas = document.getElementById("sign-canvas");
-	let ctx = canvas.getContext("2d");
-	let md = false;
-	let brushXPoints = [];
-	let brushYPoints = [];
-	let brushDownPos = [];
-
 	//Configuration du canvas pour la signature
 	canvas.style.cursor = "crosshair";
 	canvas.addEventListener("mousedown", down);
