@@ -109,6 +109,9 @@ function main(stations)
 		sessionStorage.setItem('station', '');
 		timer.clear();
 		$('#summary').css('visibility', 'hidden');
+		//On met à jour la liste des stations
+		stations[user.station].totalStands.availabilities.bikes--;
+		stations[user.station].totalStands.availabilities.stands++;
 	});
 
 	$('.close').click(function () {
