@@ -84,7 +84,6 @@ function main(stations)
 		stations[user.station].status == "OPEN")
 		{
 			$('#sign').css('visibility','visible');
-			booking();
 		}
 		else if(!stations[user.station].totalStands.availabilities.stands)
 		{

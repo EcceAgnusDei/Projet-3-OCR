@@ -30,12 +30,17 @@ canvas.addEventListener("touchmove", function(evt) {
 	draw();
 });
 
+/**
+ * Définit le bouléan mouse down sur true
+ */
 function down()
-//Définit le bouléan mouse down sur true
 {
 	md = true;
 }
-//Définit le bouléan mouse down sur false
+
+/**
+ * Définit le bouléan mouse down sur false
+ */
 function toggledraw()
 {
 	md = false;
@@ -106,39 +111,4 @@ function clearCanvas()
 	brushXPoints = [];
 	brushYPoints = [];
 	brushDownPos = [];
-}
-
-/**
- * Fonction permetant l'initialisation d'un élément canvas ainsi 
- * que le necessaire pour dessiner une signature. Il gère également les boutons
- * d'envoie et d'annulation.
- * @param [Object] Objet littéral contenant les informations de l'utilisateur
- * @param [Object] Correspond à la liste des stations fournies pas JCDecaux
- */
-function booking ()
-{
-	//Configuration du canvas pour la signature
-	canvas.style.cursor = "crosshair";
-	canvas.addEventListener("mousedown", down);
-	canvas.addEventListener("mouseup", toggledraw);
-	canvas.addEventListener("touchend", function (){
-		brushXPoints = [];
-   		brushYPoints = [];
-   		brushDownPos = [];
-	});
-	canvas.addEventListener("mousemove", function(evt) {
-		let mousePos = getMousePos(canvas, evt);
-		let posx = mousePos.x;
-		let posy = mousePos.y;
-		addBrushPoint(posx, posy, md);
-		draw();
-	});
-	canvas.addEventListener("touchmove", function(evt) {
-		evt.preventDefault();
-		let mousePos = getTouchPos(canvas, evt);
-		let posx = mousePos.x;
-		let posy = mousePos.y;
-		addBrushPoint(posx, posy, true);
-		draw();
-	});
 }
