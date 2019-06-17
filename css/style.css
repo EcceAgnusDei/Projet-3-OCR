@@ -220,7 +220,7 @@ h1
 	margin: 0 auto;
 	align-self: stretch;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: flex-start;
 	display: none;
 }
@@ -229,7 +229,7 @@ h1
 {
 	#map
 	{
-		flex: 2;
+		flex: 3;
 	}
 
 	#reservation
@@ -241,6 +241,11 @@ h1
 .reservation-top
 {
 	margin: 10px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
 }
 
 .station-info
@@ -261,7 +266,7 @@ h1
 	flex-direction: column;
 	justify-content: center;
 	align-self: center;
-	margin: 10px auto;
+	margin: 20px auto;
 }
 
 .formular *
@@ -360,7 +365,7 @@ figure img
 
 #summary
 {
-	width: 30%;
+	width: 500px;
 	height: 250px;
 	background-color: #ddd0d0;
 	border: 1px solid #b30000;
@@ -542,7 +547,7 @@ figure img
 
 	.formular
 	{
-		margin-right: 10px;
+		margin: 10px 10px 10px 0;
 		width: 35%;
 	}
 
@@ -578,6 +583,7 @@ figure img
 	{
 		width: 100%;
 	}
+
 	.formular
 	{
 		width: 120px;
