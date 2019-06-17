@@ -83,7 +83,9 @@ function main(stations)
 		stations[user.station].totalStands.availabilities.stands &&
 		stations[user.station].status == "OPEN")
 		{
-			$('#sign').css('visibility','visible');
+			$('#sign').css('display','flex');
+			$('.modal').css('display','flex');
+			$('.modal-content').css('display','none');
 		}
 		else if(!stations[user.station].totalStands.availabilities.stands)
 		{
@@ -115,13 +117,16 @@ function main(stations)
 
 	$('.close').click(function () {
 		$('.modal').css('display','none');
+		$('.modal-content').css('display','none');
 	});
 
 	$('#redoit').click(clearCanvas);
 	$('#cancel').click(function(){
 		clearCanvas();
-		$('#sign').css('visibility','hidden');
+		$('#sign').css('display','none');
 		$('#reservation').css('display','none');
+		$('.modal-content').css('display','flex');
+		$('.modal').css('display','none');
 		});
 	$('#send').click(function(){
 		if(canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data.some(channel => channel !== 0))
@@ -130,7 +135,9 @@ function main(stations)
 			clearCanvas();
 
 			$('#summary').css('visibility','visible');
-			$('#sign').css('visibility','hidden');
+			$('.modal-content').css('display','flex');
+			$('.modal').css('display','none');
+			$('#sign').css('display','none');
 			$('#reservation').css('display','none');
 			$('#cancel2').css('display','block');
 			$('#summary-address').text(stations[user.station].address);
@@ -146,11 +153,6 @@ function main(stations)
 			timer.clear();
 			timer.setSecondsLeft(20 * 60);
 			timer.launch();
-		}
-		else
-		{
-			$('.modal').css('display', 'flex');
-			$('.modal-text').text("Vous devez signer pour réserver.");
 		}
 	});
 }

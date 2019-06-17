@@ -256,36 +256,38 @@ h1
 .formular
 {
 	height: 150px;
-	width: 50%;
+	width: 120px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-self: center;
-	margin: auto;
+	margin: 10px auto;
 }
 
+.formular *
+{
+	margin: auto;
+}
 #prenom, #nom
 {
 	margin-bottom: 10px;
 	font-size: 0.9em;
+	width: 120px;
 }
 
 #reserve
 {
 	width: 100px;
-	margin: 0 auto;
 }
 
 #sign
 {
-	visibility: hidden;
-	height: 50%;
-	display: flex;
+	display: none;
+	height: 300px;
+	width: 400px;
 	flex-direction: column;
 	justify-content: space-between;
 	align-self: center;
-	margin-bottom: 10px;
-	z-index: 3;
 }
 
 .sign-btns
@@ -527,14 +529,10 @@ figure img
 
 	#reservation
 	{
+		height: auto;
 		flex-direction: row;
 		width: 100%;
 		justify-content: center;
-	}
-
-	#sign
-	{
-		width: 90%;
 	}
 
 	#summary
@@ -544,20 +542,23 @@ figure img
 
 	.formular
 	{
-		width: 120px;
+		margin-right: 10px;
+		width: 35%;
 	}
 
 	.reservation-top
 	{
-		width: 45%;
+		height: 100%;
+		margin: 0 5px;
+		width: 65%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
-	#sign
+	.reservation-top p
 	{
-		position: absolute;
-		top: 30%;
-		left: 50%;
-		transform: translateX(-50%) translateY(-50%);
+		text-align: center;
 	}
 }
 
@@ -567,10 +568,25 @@ figure img
 	{
 		display: none;
 	}
-
+	
 	#reservation
 	{
-		height: 280px;
+		flex-direction: column;
+	}
+	
+	.reservation-top
+	{
+		width: 100%;
+	}
+	.formular
+	{
+		width: 120px;
+		margin: 10px auto;
+	}
+
+	#sign
+	{
+		width: 300px;
 	}
 
 	#summary
@@ -582,4 +598,9 @@ figure img
 	{
 		background-position: 40%;
 	}	
+
+	.sign-btns
+	{
+		font-size: 0.9em;
+	}
 }
